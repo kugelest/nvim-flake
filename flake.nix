@@ -159,6 +159,7 @@
             plenary-nvim
             nvim-notify
                 efmls-configs-nvim
+                lsp-format-nvim
           ];
           extra = [
             oil-nvim

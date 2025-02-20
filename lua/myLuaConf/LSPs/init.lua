@@ -76,6 +76,7 @@ if nixCats('react') then
         local languages = require('efmls-configs.defaults').languages()
 
         require('lspconfig').efm.setup({
+                on_attach = require("lsp-format").on_attach,
                 init_options = {
                         documentFormatting = true,
                         documentRangeFormatting = true,
