@@ -65,6 +65,8 @@ return {
     -- event = "",
     -- ft = "",
     keys = {
+      { "<leader>ff", function() return require('telescope.builtin').find_files() end, mode = {"n"}, desc = '[F]ind [F]iles', },
+      { "<leader>ff", function() return require('telescope.builtin').git_files() end, mode = {"n"}, desc = '[G]it [F]iles', },
       { "<leader>fM", '<cmd>Telescope notify<CR>', mode = {"n"}, desc = '[S]earch [M]essage', },
       { "<leader>f/",live_grep_git_root, mode = {"n"}, desc = '[S]earch git [P]roject root', },
       { "<leader>/", function() return require('telescope.builtin').live_grep() end, mode = {"n"}, desc = '[S]earch [/] in Open Files' },
@@ -72,7 +74,6 @@ return {
       { "<leader>fp", function() return require('telescope.builtin').oldfiles() end, mode = {"n"}, desc = '[S]earch Recent Files ("." for repeat)', },
       { "<leader>fd", function() return require('telescope.builtin').diagnostics() end, mode = {"n"}, desc = '[S]earch [D]iagnostics', },
       { "<leader>ft", function() return require('telescope.builtin').builtin() end, mode = {"n"}, desc = '[S]earch [S]elect Telescope', },
-      { "<leader>ff", function() return require('telescope.builtin').find_files() end, mode = {"n"}, desc = '[S]earch [F]iles', },
       { "<leader>fk", function() return require('telescope.builtin').keymaps() end, mode = {"n"}, desc = '[S]earch [K]eymaps', },
       { "<leader>f?", function() return require('telescope.builtin').help_tags() end, mode = {"n"}, desc = '[S]earch [H]elp', },
     },
