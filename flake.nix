@@ -115,7 +115,6 @@
           fd
           xclip
           efm-langserver
-          efmls-configs-nvim
         ];
         # these names are arbitrary.
         lint = with pkgs; [
@@ -159,6 +158,7 @@
             vim-repeat
             plenary-nvim
             nvim-notify
+                efmls-configs-nvim
           ];
           extra = [
             oil-nvim
