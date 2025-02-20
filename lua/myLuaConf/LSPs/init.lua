@@ -78,7 +78,8 @@ if nixCats('react') then
                         rootMarkers = { ".git/" },
                         languages = {
                                 javascript = {
-                                        { formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true }
+                                        require('efmls-configs.formatters.prettier'),
+                                        -- { formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true }
                                 }
                         }
                 }

@@ -115,6 +115,7 @@
           fd
           xclip
           efm-langserver
+          efmls-configs-nvim
         ];
         # these names are arbitrary.
         lint = with pkgs; [
