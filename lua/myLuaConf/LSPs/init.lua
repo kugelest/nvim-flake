@@ -70,7 +70,9 @@ if nixCats('neonixdev') then
 end
 
 if nixCats('react') then
-  servers.ts_ls = {}
+  servers.ts_ls = {
+          filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  }
 end
 
 -- This is this flake's version of what kickstarter has set up for mason handlers.
