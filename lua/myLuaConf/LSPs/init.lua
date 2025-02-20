@@ -141,6 +141,7 @@ require('lze').load {
                                                 filetypes = (cfg or {}).filetypes,
                                                 cmd = (cfg or {}).cmd,
                                                 root_pattern = (cfg or {}).root_pattern,
+                                                init_options = (cfg or {}).init_options,
                                         })
                                 end
                         else
