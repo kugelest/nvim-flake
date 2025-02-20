@@ -128,6 +128,10 @@
           go-tools
           gccgo
         ];
+        react = with pkgs; [
+                typescript-language-server
+                typescript
+        ];
         # and easily check if they are included in lua
         format = with pkgs; [
         ];

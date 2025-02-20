@@ -69,8 +69,8 @@ if nixCats('neonixdev') then
 
 end
 
-if nixCats('go') then
-  servers.gopls = {}
+if nixCats('react') then
+  servers.ts_ls = {}
 end
 
 -- This is this flake's version of what kickstarter has set up for mason handlers.
