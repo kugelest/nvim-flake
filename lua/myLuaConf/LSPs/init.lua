@@ -72,18 +72,20 @@ end
 if nixCats('react') then
         servers.ts_ls = {}
         servers.html = { filetypes = { 'html', 'twig', 'hbs' } }
-        servers.efm = {
-                init_options = { documentFormatting = true },
+
+        local languages = require('efmls-configs.defaults').languages()
+
+        require('lspconfig').efm.setup({
+                init_options = {
+                        documentFormatting = true,
+                        documentRangeFormatting = true,
+                },
+                filetypes = vim.tbl_keys(languages),
                 settings = {
-                        rootMarkers = { ".git/" },
-                        languages = {
-                                javascript = {
-                                        require('efmls-configs.formatters.prettier'),
-                                        -- { formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true }
-                                }
-                        }
-                }
-        }
+                        rootMarkers = { '.git/' },
+                        languages = languages,
+                },
+        })
 end
 
 -- This is this flake's version of what kickstarter has set up for mason handlers.
