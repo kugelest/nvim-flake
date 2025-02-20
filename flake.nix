@@ -372,6 +372,7 @@
           lint = true;
           format = true;
           neonixdev = true;
+          react = true;
           test = {
             subtest1 = true;
           };
