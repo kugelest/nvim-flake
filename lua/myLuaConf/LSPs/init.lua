@@ -73,6 +73,8 @@ if nixCats('react') then
   servers.ts_ls = {
           filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   }
+        servers.tsserver = {}
+        servers.html = { filetypes = { 'html', 'twig', 'hbs'} }
 end
 
 -- This is this flake's version of what kickstarter has set up for mason handlers.
@@ -91,8 +93,6 @@ end
 -- servers.gopls = {},
 -- servers.pyright = {},
 -- servers.rust_analyzer = {},
--- servers.tsserver = {},
--- servers.html = { filetypes = { 'html', 'twig', 'hbs'} },
 
 
 if not require('nixCatsUtils').isNixCats and nixCats('lspDebugMode') then
