@@ -70,10 +70,7 @@ if nixCats('neonixdev') then
 end
 
 if nixCats('react') then
-  servers.ts_ls = {
-          filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  }
-        servers.tsserver = {}
+  servers.ts_ls = {}
         servers.html = { filetypes = { 'html', 'twig', 'hbs'} }
 end
 

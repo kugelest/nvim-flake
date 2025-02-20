@@ -27,6 +27,7 @@ function M.on_attach(_, bufnr)
   end -- TODO: someone who knows the builtin versions of these to do instead help me out please.
 
   nmap('<leader>ld', vim.lsp.buf.type_definition, 'Type [D]efinition')
+  nmap('<leader>lf', vim.lsp.buf.format, '[F]ormat')
 
   -- See `:help K` for why this keymap
   nmap('<leader>lk', vim.lsp.buf.hover, 'Hover Documentation')
@@ -34,11 +35,6 @@ function M.on_attach(_, bufnr)
 
   -- Lesser used LSP functionality
   nmap('<leader>lD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
 
 end
 
