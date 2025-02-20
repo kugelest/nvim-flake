@@ -82,7 +82,7 @@ if nixCats('react') then
                 },
                 filetypes = vim.tbl_keys(languages),
                 settings = {
-                        rootMarkers = { '.git/' },
+                        -- rootMarkers = { '.git/' },
                         languages = languages,
                 },
         })
