@@ -131,6 +131,7 @@
         react = with pkgs; [
                 typescript-language-server
                 typescript
+                vscode-langservers-extracted
         ];
         # and easily check if they are included in lua
         format = with pkgs; [
