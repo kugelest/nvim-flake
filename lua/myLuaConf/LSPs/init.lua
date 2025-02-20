@@ -80,13 +80,14 @@ if nixCats('react') then
         }
 
         require('lspconfig').efm.setup({
+		on_attach = require("lsp-format").on_attach,
                 init_options = {
                         documentFormatting = true,
                         documentRangeFormatting = true,
                 },
                 filetypes = vim.tbl_keys(languages),
                 settings = {
-                        rootMarkers = { '.git/' },
+                        -- rootMarkers = { '.git/' },
                         languages = languages,
                 },
         })
