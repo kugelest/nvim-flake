@@ -2,36 +2,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-if os.getenv('WAYLAND_DISPLAY') and vim.fn.exepath('wl-copy') ~= "" then
-  vim.g.clipboard = {
-      name = 'wl-clipboard',
-      copy = {
-          ['+'] = 'wl-copy',
-          ['*'] = 'wl-copy',
-      },
-      paste = {
-          ['+'] = 'wl-paste',
-          ['*'] = 'wl-paste',
-      },
-      cache_enabled = 1,
-  }
-end
-
-
--- if os.getenv('DISPLAY') and vim.fn.exepath('xclip') ~= "" then
---   vim.g.clipboard = {
---       name = 'xclip',
---       copy = {
---           ['+'] = 'xclip -selection clipboard',
---           ['*'] = 'xclip -selection primary',
---       },
---       paste = {
---           ['+'] = 'xclip -selection clipboard -o',
---           ['*'] = 'xclip -selection primary -o',
---       },
---       cache_enabled = 1,
---   }
--- end
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -154,7 +124,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
--- vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = 'unnamedplus'
 
 -- You should instead use these keybindings so that they are still easy to use, but dont conflict
 vim.keymap.set("n", '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank to clipboard' })
