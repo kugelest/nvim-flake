@@ -18,20 +18,20 @@ if os.getenv('WAYLAND_DISPLAY') and vim.fn.exepath('wl-copy') ~= "" then
 end
 
 
-if os.getenv('DISPLAY') and vim.fn.exepath('xclip') ~= "" then
-  vim.g.clipboard = {
-      name = 'xclip',
-      copy = {
-          ['+'] = 'xclip -selection clipboard',
-          ['*'] = 'xclip -selection primary',
-      },
-      paste = {
-          ['+'] = 'xclip -selection clipboard -o',
-          ['*'] = 'xclip -selection primary -o',
-      },
-      cache_enabled = 1,
-  }
-end
+-- if os.getenv('DISPLAY') and vim.fn.exepath('xclip') ~= "" then
+--   vim.g.clipboard = {
+--       name = 'xclip',
+--       copy = {
+--           ['+'] = 'xclip -selection clipboard',
+--           ['*'] = 'xclip -selection primary',
+--       },
+--       paste = {
+--           ['+'] = 'xclip -selection clipboard -o',
+--           ['*'] = 'xclip -selection primary -o',
+--       },
+--       cache_enabled = 1,
+--   }
+-- end
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
