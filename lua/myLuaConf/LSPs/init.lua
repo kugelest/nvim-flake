@@ -74,16 +74,22 @@ if nixCats('react') then
 	-- servers.html = { filetypes = { 'html', 'twig', 'hbs' } }
 
 	local languages = require('efmls-configs.defaults').languages()
+	languages = vim.tbl_extend('force', languages, {
+		-- Custom languages, or override existing ones
+		javascript = {
+			require('efmls-configs.formatters.prettier'),
+		},
+	})
 	servers.efm = {
 		filetypes = vim.tbl_keys(languages),
 		settings = {
 			-- rootMarkers = { ".git/" },
 			languages = languages,
 		},
-		-- init_options = {
-		-- 	documentFormatting = true,
-		-- 	documentRangeFormatting = true,
-		-- },
+		init_options = {
+			documentFormatting = true,
+			documentRangeFormatting = true,
+		},
 	}
 
 	-- require('lspconfig').efm.setup(vim.tbl_extend('force', efmls_config, {
@@ -159,7 +165,7 @@ require('lze').load {
 			if require('nixCatsUtils').isNixCats then
 				for server_name, cfg in pairs(servers) do
 					require('lspconfig')[server_name].setup({
-						-- init_options = (cfg or {}).init_options,
+						init_options = (cfg or {}).init_options,
 						capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(
 							server_name),
 						-- this line is interchangeable with the above LspAttach autocommand
