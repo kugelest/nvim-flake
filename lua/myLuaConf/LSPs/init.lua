@@ -70,8 +70,8 @@ if nixCats('neonixdev') then
 end
 
 if nixCats('react') then
-	servers.ts_ls = {}
-	servers.html = { filetypes = { 'html', 'twig', 'hbs' } }
+	-- servers.ts_ls = {}
+	-- servers.html = { filetypes = { 'html', 'twig', 'hbs' } }
 
 	local prettier = require('efmls-configs.formatters.prettier')
 	local languages = {
@@ -80,7 +80,7 @@ if nixCats('react') then
 	}
 
 	require('lspconfig').efm.setup({
-		on_attach = require("lsp-format").on_attach,
+		on_attach = function(event) require('myLuaConf.LSPs.caps-on_attach').on_attach(vim.lsp.get_client_by_id(event.data.client_id), event.buf) end,
 		init_options = {
 			documentFormatting = true,
 			documentRangeFormatting = true,
@@ -119,13 +119,13 @@ end
 -- nvim-lspconfig, it would do the same thing.
 -- come to think of it, it might be better because then lspconfig doesnt have to be called before lsp attach?
 -- but you would still end up triggering on a FileType event anyway, so, it makes little difference.
-vim.api.nvim_create_autocmd('LspAttach', {
-	group = vim.api.nvim_create_augroup('nixCats-lsp-attach', { clear = true }),
-	callback = function(event)
-		require('myLuaConf.LSPs.caps-on_attach').on_attach(vim.lsp.get_client_by_id(event.data.client_id),
-			event.buf)
-	end
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+-- 	group = vim.api.nvim_create_augroup('nixCats-lsp-attach', { clear = true }),
+-- 	callback = function(event)
+-- 		require('myLuaConf.LSPs.caps-on_attach').on_attach(vim.lsp.get_client_by_id(event.data.client_id),
+-- 			event.buf)
+-- 	end
+-- })
 
 require('lze').load {
 	{
@@ -149,7 +149,6 @@ require('lze').load {
 						filetypes = (cfg or {}).filetypes,
 						cmd = (cfg or {}).cmd,
 						root_pattern = (cfg or {}).root_pattern,
-						init_options = (cfg or {}).init_options,
 					})
 				end
 			else
