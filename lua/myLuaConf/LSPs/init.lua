@@ -71,6 +71,14 @@ end
 
 if nixCats('react') then
 	-- servers.ts_ls = {}
+	servers.eslint = {
+		settings = {
+			experimental = {
+				useFlatConfig = false
+			},
+			format = false,
+		}
+	}
 	-- servers.html = { filetypes = { 'html', 'twig', 'hbs' } }
 
 
@@ -98,11 +106,9 @@ if nixCats('react') then
 	-- 	},
 	-- }
 	local null_ls = require("null-ls")
-
 	null_ls.setup({
 		sources = {
 			null_ls.builtins.formatting.prettier,
-			null_ls.builtins.diagnostics.eslint,
 		},
 		on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
 	})
