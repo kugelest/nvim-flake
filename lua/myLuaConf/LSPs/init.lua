@@ -84,7 +84,7 @@ if nixCats('react') then
 	servers.efm = {
 		filetypes = vim.tbl_keys(languages),
 		settings = {
-			-- rootMarkers = { ".git/" },
+			rootMarkers = { ".git/" },
 			languages = languages,
 		},
 		init_options = {
