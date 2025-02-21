@@ -28,7 +28,7 @@ if nixCats('neonixdev') then
 						-- for additional configuration options, refer to:
 						-- https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
 						expr = [[import (builtins.getFlake "]] ..
-						    nixCats.extra("nixdExtras.nixpkgs") .. [[") { }   ]],
+							nixCats.extra("nixdExtras.nixpkgs") .. [[") { }   ]],
 					},
 					formatting = {
 						command = { "nixfmt" }
@@ -52,14 +52,14 @@ if nixCats('neonixdev') then
 				-- (builtins.getFlake "<path_to_system_flake>").nixosConfigurations."<name>".options
 				servers.nixd.settings.nixd.options.nixos = {
 					expr = [[(builtins.getFlake "]] .. flakePath .. [[").nixosConfigurations."]] ..
-					    nixCats.extra("nixdExtras.systemCFGname") .. [[".options]]
+						nixCats.extra("nixdExtras.systemCFGname") .. [[".options]]
 				}
 			end
 			if nixCats.extra("nixdExtras.homeCFGname") then
 				-- (builtins.getFlake "<path_to_system_flake>").homeConfigurations."<name>".options
 				servers.nixd.settings.nixd.options["home-manager"] = {
 					expr = [[(builtins.getFlake "]] .. flakePath .. [[").homeConfigurations."]]
-					    .. nixCats.extra("nixdExtras.homeCFGname") .. [[".options]]
+						.. nixCats.extra("nixdExtras.homeCFGname") .. [[".options]]
 				}
 			end
 		end
@@ -74,30 +74,38 @@ if nixCats('react') then
 	-- servers.html = { filetypes = { 'html', 'twig', 'hbs' } }
 
 
-	local languages = require('efmls-configs.defaults').languages()
-	languages = vim.tbl_extend('force', languages, {
-		-- Custom languages, or override existing ones
-		javascriptreact = {
-			require('efmls-configs.linters.eslint'),
-			require('efmls-configs.formatters.prettier'),
-		},
-	})
-	servers.efm = {
-		filetypes = vim.tbl_keys(languages),
-		settings = {
-			rootMarkers = { ".git/" },
-			languages = languages,
-		},
-		init_options = {
-			documentFormatting = true,
-			documentRangeFormatting = true,
-			hover = true,
-			documentSymbol = true,
-			codeAction = true,
-			completion = true
-		},
-	}
+	-- local languages = require('efmls-configs.defaults').languages()
+	-- languages = vim.tbl_extend('force', languages, {
+	-- 	-- Custom languages, or override existing ones
+	-- 	javascriptreact = {
+	-- 		require('efmls-configs.linters.eslint'),
+	-- 		require('efmls-configs.formatters.prettier'),
+	-- 	},
+	-- })
+	-- servers.efm = {
+	-- 	filetypes = vim.tbl_keys(languages),
+	-- 	settings = {
+	-- 		rootMarkers = { ".git/" },
+	-- 		languages = languages,
+	-- 	},
+	-- 	init_options = {
+	-- 		documentFormatting = true,
+	-- 		documentRangeFormatting = true,
+	-- 		hover = true,
+	-- 		documentSymbol = true,
+	-- 		codeAction = true,
+	-- 		completion = true
+	-- 	},
+	-- }
+	local null_ls = require("null-ls")
 
+	null_ls.setup({
+		sources = {
+			null_ls.builtins.formatting.prettier,
+			null_ls.builtins.diagnostics.eslint,
+		},
+		on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
+	})
 
 
 	-- require('lspconfig').efm.setup(vim.tbl_extend('force', efmls_config, {

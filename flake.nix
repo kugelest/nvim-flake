@@ -157,9 +157,8 @@
             lze
             vim-repeat
             plenary-nvim
-            nvim-notify
-                efmls-configs-nvim
-                lsp-format-nvim
+			nvim-notify
+			none-ls-nvim
           ];
           extra = [
             oil-nvim
