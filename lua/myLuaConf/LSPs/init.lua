@@ -70,7 +70,7 @@ if nixCats('neonixdev') then
 end
 
 if nixCats('react') then
-	servers.ts_ls = {}
+	-- servers.ts_ls = {}
 	-- servers.html = { filetypes = { 'html', 'twig', 'hbs' } }
 
 
@@ -78,7 +78,7 @@ if nixCats('react') then
 	languages = vim.tbl_extend('force', languages, {
 		-- Custom languages, or override existing ones
 		javascriptreact = {
-        		require('efmls-configs.linters.eslint'),
+			require('efmls-configs.linters.eslint'),
 			require('efmls-configs.formatters.prettier'),
 		},
 	})
@@ -91,6 +91,10 @@ if nixCats('react') then
 		init_options = {
 			documentFormatting = true,
 			documentRangeFormatting = true,
+			hover = true,
+			documentSymbol = true,
+			codeAction = true,
+			completion = true
 		},
 	}
 
