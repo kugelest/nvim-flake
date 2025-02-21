@@ -75,12 +75,13 @@ if nixCats('react') then
 
 
 	local languages = require('efmls-configs.defaults').languages()
-	-- languages = vim.tbl_extend('force', languages, {
-	-- 	-- Custom languages, or override existing ones
-	-- 	javascript = {
-	-- 		require('efmls-configs.formatters.prettier'),
-	-- 	},
-	-- })
+	languages = vim.tbl_extend('force', languages, {
+		-- Custom languages, or override existing ones
+		javascriptreact = {
+        		require('efmls-configs.linters.eslint'),
+			require('efmls-configs.formatters.prettier'),
+		},
+	})
 	servers.efm = {
 		filetypes = vim.tbl_keys(languages),
 		settings = {
