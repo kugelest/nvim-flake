@@ -70,28 +70,28 @@ if nixCats('neonixdev') then
 end
 
 if nixCats('react') then
-	servers.ts_ls = {}
+	-- servers.ts_ls = {}
 	-- servers.html = { filetypes = { 'html', 'twig', 'hbs' } }
 
 
-	-- local languages = require('efmls-configs.defaults').languages()
+	local languages = require('efmls-configs.defaults').languages()
 	-- languages = vim.tbl_extend('force', languages, {
 	-- 	-- Custom languages, or override existing ones
 	-- 	javascript = {
 	-- 		require('efmls-configs.formatters.prettier'),
 	-- 	},
 	-- })
-	-- servers.efm = {
-	-- 	filetypes = vim.tbl_keys(languages),
-	-- 	settings = {
-	-- 		-- rootMarkers = { ".git/" },
-	-- 		languages = languages,
-	-- 	},
-	-- 	init_options = {
-	-- 		documentFormatting = true,
-	-- 		documentRangeFormatting = true,
-	-- 	},
-	-- }
+	servers.efm = {
+		filetypes = vim.tbl_keys(languages),
+		settings = {
+			-- rootMarkers = { ".git/" },
+			languages = languages,
+		},
+		init_options = {
+			documentFormatting = true,
+			documentRangeFormatting = true,
+		},
+	}
 
 
 
