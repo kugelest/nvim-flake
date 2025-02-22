@@ -114,7 +114,7 @@
           ripgrep
           fd
           xclip
-          efm-langserver
+		  nixfmt-rfc-style
         ];
         # these names are arbitrary.
         lint = with pkgs; [
