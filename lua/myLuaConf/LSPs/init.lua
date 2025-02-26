@@ -71,7 +71,7 @@ end
 
 
 if nixCats('react') then
-	-- servers.ts_ls = {}
+	servers.ts_ls = {}
 
 	servers.eslint = {
 		settings = {
