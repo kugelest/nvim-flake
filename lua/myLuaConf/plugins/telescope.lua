@@ -66,7 +66,7 @@ return {
     -- ft = "",
     keys = {
       { "<leader>ff", function() return require('telescope.builtin').find_files() end, mode = {"n"}, desc = '[F]ind [F]iles', },
-      { "<leader>fr", function() return require('telescope.builtin').git_files() end, mode = {"n"}, desc = '[G]it [F]iles', },
+      { "<leader>fa", function() return require('telescope.builtin').git_files() end, mode = {"n"}, desc = '[G]it [F]iles', },
       { "<leader>fg", function() return require('telescope.builtin').git_files({use_git_root = false}) end, mode = {"n"}, desc = '[G]it [F]iles', },
       { "<leader>fM", '<cmd>Telescope notify<CR>', mode = {"n"}, desc = '[S]earch [M]essage', },
       { "<leader>f/",live_grep_git_root, mode = {"n"}, desc = '[S]earch git [P]roject root', },
