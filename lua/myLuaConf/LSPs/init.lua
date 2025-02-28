@@ -134,17 +134,38 @@ require('lze').load {
 		after = function(plugin)
 			if require('nixCatsUtils').isNixCats then
 				for server_name, cfg in pairs(servers) do
-					require('lspconfig')[server_name].setup({
-						-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
-						capabilities = (cfg and cfg.capabilities) or
-						require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
-						on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
-						settings = (cfg or {}).settings,
-						filetypes = (cfg or {}).filetypes,
-						cmd = (cfg or {}).cmd,
-						root_pattern = (cfg or {}).root_pattern,
-					})
+					local server_config = {
+						on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach
+					}
+					-- If cfg exists, use its values
+					if cfg then
+						-- Merge cfg into server_config
+						for k, v in pairs(cfg) do
+							server_config[k] = v
+						end
+					end
+					-- Ensure capabilities is set properly
+					if not server_config.capabilities then
+						server_config.capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(
+							server_name)
+					end
+					-- Setup the LSP
+					require('lspconfig')[server_name].setup(server_config)
 				end
+
+				-- if require('nixCatsUtils').isNixCats then
+				-- 	for server_name, cfg in pairs(servers) do
+				-- 		require('lspconfig')[server_name].setup({
+				-- 			-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
+				-- 			capabilities = (cfg and cfg.capabilities) or
+				-- 			require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
+				-- 			on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
+				-- 			settings = (cfg or {}).settings,
+				-- 			filetypes = (cfg or {}).filetypes,
+				-- 			cmd = (cfg or {}).cmd,
+				-- 			root_pattern = (cfg or {}).root_pattern,
+				-- 		})
+				-- 	end
 			else
 				require('mason').setup()
 				local mason_lspconfig = require 'mason-lspconfig'
