@@ -91,27 +91,27 @@ if nixCats('react') then
 		-- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
 		-- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
 		capabilities = vim.tbl_deep_extend(
-				'force',
-				capabilities,
-				{
-					workspace = {
-						didChangeWatchedFiles = {
-							dynamicRegistration = true,
-						},
+			'force',
+			capabilities,
+			{
+				workspace = {
+					didChangeWatchedFiles = {
+						dynamicRegistration = true,
 					},
-				}
-			),
+				},
+			}
+		),
 		filetypes = { 'typescriptreact', 'javascriptreact', 'javascript' },
-		}
-	
+	}
+
 
 	local null_ls = require("null-ls")
 	servers.null_ls = {
-			sources = {
-				null_ls.builtins.formatting.prettier,
-			},
-			-- on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
-			-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities("null_ls"),
+		sources = {
+			null_ls.builtins.formatting.prettier,
+		},
+		-- on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
+		-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities("null_ls"),
 	}
 end
 
@@ -132,39 +132,39 @@ require('lze').load {
 			vim.cmd.packadd("mason-lspconfig.nvim")
 		end,
 		after = function(plugin)
-			-- if require('nixCatsUtils').isNixCats then
-				-- for server_name, cfg in pairs(servers) do
-				-- 	local server_config = {
-				-- 		on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach
-				-- 	}
-				-- 	-- If cfg exists, use its values
-				-- 	if cfg then
-				-- 		-- Merge cfg into server_config
-				-- 		for k, v in pairs(cfg) do
-				-- 			server_config[k] = v
-				-- 		end
-				-- 	end
-				-- 	-- Ensure capabilities is set properly
-				-- 	if not server_config.capabilities then
-				-- 		server_config.capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(
-				-- 			server_name)
-				-- 	end
-				-- 	-- Setup the LSP
-				-- 	require('lspconfig')[server_name].setup(server_config)
-				-- end
-
-				if require('nixCatsUtils').isNixCats then
-					for server_name, cfg in pairs(servers) do
-						require('lspconfig')[server_name].setup({
-							-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
-							capabilities = (cfg and cfg.capabilities) or require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
-							on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
-							settings = (cfg or {}).settings,
-							filetypes = (cfg or {}).filetypes,
-							cmd = (cfg or {}).cmd,
-							root_pattern = (cfg or {}).root_pattern,
-						})
+			if require('nixCatsUtils').isNixCats then
+				for server_name, cfg in pairs(servers) do
+					local server_config = {
+						on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach
+					}
+					-- If cfg exists, use its values
+					if cfg then
+						-- Merge cfg into server_config
+						for k, v in pairs(cfg) do
+							server_config[k] = v
+						end
 					end
+					-- Ensure capabilities is set properly
+					if not server_config.capabilities then
+						server_config.capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(
+							server_name)
+					end
+					-- Setup the LSP
+					require('lspconfig')[server_name].setup(server_config)
+				end
+
+				-- for server_name, cfg in pairs(servers) do
+				-- 	require('lspconfig')[server_name].setup({
+				-- 		-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
+				-- 		capabilities = (cfg and cfg.capabilities) or
+				-- 		require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
+				-- 		on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
+				-- 		settings = (cfg or {}).settings,
+				-- 		filetypes = (cfg or {}).filetypes,
+				-- 		cmd = (cfg or {}).cmd,
+				-- 		root_pattern = (cfg or {}).root_pattern,
+				-- 	})
+				-- end
 			else
 				require('mason').setup()
 				local mason_lspconfig = require 'mason-lspconfig'
