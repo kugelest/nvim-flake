@@ -11,7 +11,7 @@ function M.on_attach(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>ln', vim.lsp.buf.rename, '[R]e[n]ame')
+  nmap('<leader>lr', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>la', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
@@ -20,14 +20,14 @@ function M.on_attach(_, bufnr)
   -- because otherwise they would load telescope eagerly when this is defined.
   -- due to us using the on_require handler to make sure it is available.
   if nixCats('general.telescope') then
-    nmap('<leader>lr', function() require('telescope.builtin').lsp_references() end, '[G]oto [R]eferences')
+    nmap('<leader>lR', function() require('telescope.builtin').lsp_references() end, '[G]oto [R]eferences')
     nmap('<leader>li', function() require('telescope.builtin').lsp_implementations() end, '[G]oto [I]mplementation')
     nmap('<leader>ls', function() require('telescope.builtin').lsp_document_symbols() end, '[D]ocument [S]ymbols')
     nmap('<leader>lws', function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, '[W]orkspace [S]ymbols')
   end -- TODO: someone who knows the builtin versions of these to do instead help me out please.
 
-  nmap('<leader>ld', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('<leader>lf', vim.lsp.buf.format, '[F]ormat')
+  nmap('<leader>ld', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
   -- See `:help K` for why this keymap
   nmap('<leader>lk', vim.lsp.buf.hover, 'Hover Documentation')

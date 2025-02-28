@@ -17,9 +17,6 @@
 -- telescope picker. This is really useful to discover what Telescope can
 -- do as well as how to actually do it!
 
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
-
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
 local function find_git_root()
