@@ -123,7 +123,7 @@ require('lze').load {
     "nvim-ts-context-commentstring",
     for_cat = 'general.extra',
     event = "DeferredUIEnter",
-    after = function(plugin)
+    before = function(plugin)
       require('ts_context_commentstring').setup({
 		  enable_autocmd = false,
 	  })
