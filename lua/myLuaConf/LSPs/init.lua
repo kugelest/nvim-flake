@@ -133,7 +133,8 @@ require('lze').load {
 			if require('nixCatsUtils').isNixCats then
 				for server_name, cfg in pairs(servers) do
 					require('lspconfig')[server_name].setup({
-						capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
+						-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
+						capabilities = (cfg and cfg.capabilities) or require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
 						on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
 						settings = (cfg or {}).settings,
 						filetypes = (cfg or {}).filetypes,
