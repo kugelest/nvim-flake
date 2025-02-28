@@ -87,7 +87,7 @@ if nixCats('react') then
 
 	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-	servers.markdown_oxide.setup({
+	servers.markdown_oxide = {
 		-- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
 		-- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
 		capabilities = vim.tbl_deep_extend(
@@ -101,7 +101,7 @@ if nixCats('react') then
 				},
 			}
 		),
-	})
+	}
 
 	local null_ls = require("null-ls")
 	null_ls.setup({
