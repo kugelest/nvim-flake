@@ -110,8 +110,8 @@ if nixCats('react') then
 			sources = {
 				null_ls.builtins.formatting.prettier,
 			},
-			on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
-			capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities("null_ls"),
+			-- on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
+			-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities("null_ls"),
 	}
 end
 
@@ -132,7 +132,7 @@ require('lze').load {
 			vim.cmd.packadd("mason-lspconfig.nvim")
 		end,
 		after = function(plugin)
-			if require('nixCatsUtils').isNixCats then
+			-- if require('nixCatsUtils').isNixCats then
 				-- for server_name, cfg in pairs(servers) do
 				-- 	local server_config = {
 				-- 		on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach
