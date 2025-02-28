@@ -134,6 +134,7 @@
                 typescript-language-server
                 typescript
                 vscode-langservers-extracted
+				jdt-language-server
         ];
         # and easily check if they are included in lua
         format = with pkgs; [
