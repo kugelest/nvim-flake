@@ -124,7 +124,7 @@ require('lze').load {
     for_cat = 'general.extra',
     event = "DeferredUIEnter",
     after = function(plugin)
-      require('Comment').setup({
+      require('ts_context_commentstring').setup({
 		  enable_autocmd = false,
 	  })
     end,
