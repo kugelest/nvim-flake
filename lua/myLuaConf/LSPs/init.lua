@@ -90,17 +90,19 @@ if nixCats('react') then
 	servers.markdown_oxide = {
 		-- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
 		-- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
-		capabilities = vim.tbl_deep_extend(
-			'force',
-			capabilities,
-			{
-				workspace = {
-					didChangeWatchedFiles = {
-						dynamicRegistration = true,
+		capabilities = {
+			settings = vim.tbl_deep_extend(
+				'force',
+				capabilities,
+				{
+					workspace = {
+						didChangeWatchedFiles = {
+							dynamicRegistration = true,
+						},
 					},
-				},
-			}
-		),
+				}
+			),
+		}
 	}
 
 	local null_ls = require("null-ls")
@@ -134,7 +136,8 @@ require('lze').load {
 				for server_name, cfg in pairs(servers) do
 					require('lspconfig')[server_name].setup({
 						-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
-						capabilities = (cfg and cfg.capabilities) or require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
+						capabilities = (cfg and cfg.capabilities) or
+						require('myLuaConf.LSPs.caps-on_attach').get_capabilities(server_name),
 						on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
 						settings = (cfg or {}).settings,
 						filetypes = (cfg or {}).filetypes,
