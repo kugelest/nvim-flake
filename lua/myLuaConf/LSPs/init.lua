@@ -101,7 +101,7 @@ if nixCats('react') then
 				},
 			}
 		),
-		filetypes = { 'typescriptreact', 'javascriptreact', 'javascript' },
+		filetypes = { 'markdown' },
 	}
 
 
@@ -112,6 +112,7 @@ if nixCats('react') then
 		},
 		-- on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
 		-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities("null_ls"),
+		filetypes = { 'typescriptreact', 'javascriptreact', 'javascript' },
 	}
 end
 
