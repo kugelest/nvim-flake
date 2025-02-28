@@ -123,7 +123,6 @@
           lspsAndRuntimeDeps = {
             # some categories of stuff.
             general = with pkgs; [
-              markdown-oxide
               universal-ctags
               ripgrep
               fd
@@ -145,10 +144,12 @@
               gccgo
             ];
             react = with pkgs; [
+              markdown-oxide
               typescript-language-server
               typescript
               vscode-langservers-extracted
               jdt-language-server
+			  eslint
             ];
             # and easily check if they are included in lua
             format = with pkgs; [
