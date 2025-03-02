@@ -74,6 +74,7 @@ return {
       { "<leader>ft", function() return require('telescope.builtin').builtin() end, mode = {"n"}, desc = '[S]earch [S]elect Telescope', },
       { "<leader>fk", function() return require('telescope.builtin').keymaps() end, mode = {"n"}, desc = '[S]earch [K]eymaps', },
       { "<leader>f?", function() return require('telescope.builtin').help_tags() end, mode = {"n"}, desc = '[S]earch [H]elp', },
+      { "<leader>fR", function() return require('telescope.builtin').lsp_references() end, mode = {"n"}, desc = '[F]ind [R]eferences', },
     },
     -- colorscheme = "",
     load = function (name)
