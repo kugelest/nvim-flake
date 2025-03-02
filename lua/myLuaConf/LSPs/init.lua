@@ -71,6 +71,7 @@ end
 
 if nixCats('markdown') then
 	servers.marksman = {}
+	vim.opt.conceallevel = 2
 end
 
 if nixCats('react') then
