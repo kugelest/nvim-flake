@@ -148,7 +148,7 @@
               typescript
               vscode-langservers-extracted
               jdt-language-server
-			  eslint
+			  # eslint
             ];
 			markdown = with pkgs; [
 				marksman
