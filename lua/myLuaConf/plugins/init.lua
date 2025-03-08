@@ -133,7 +133,7 @@ require('lze').load {
 	},
 	{
 		"nvim-ts-context-commentstring",
-		for_cat = 'general.always',
+		for_cat = 'general.extra',
 		event = "DeferredUIEnter",
 		after = function(plugin)
 			require('ts_context_commentstring').setup({
@@ -143,7 +143,7 @@ require('lze').load {
 	},
 	{
 		"null-ls",
-		for_cat = 'general.always',
+		for_cat = 'general.extra',
 		event = "DeferredUIEnter",
 		after = function(plugin)
 			local null_ls = require("null-ls")

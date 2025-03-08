@@ -176,11 +176,11 @@
                 vim-repeat
                 plenary-nvim
                 nvim-notify
-                none-ls-nvim
               ];
               extra = [
                 oil-nvim
                 nvim-web-devicons
+                none-ls-nvim
               ];
             };
             # You can retreive information from the
@@ -269,9 +269,9 @@
                 vim-fugitive
                 vim-rhubarb
                 nvim-surround
-                nvim-ts-context-commentstring
               ];
               extra = with pkgs.vimPlugins; [
+                nvim-ts-context-commentstring
                 fidget-nvim
                 # lualine-lsp-progress
                 which-key-nvim
