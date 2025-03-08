@@ -91,17 +91,6 @@ if nixCats('react') then
 			format = false,
 		}
 	}
-
-
-
-	servers.null_ls = {
-		sources = {
-			require("null-ls").builtins.formatting.prettier,
-		},
-		-- on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
-		-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities("null_ls"),
-		-- filetypes = { 'typescriptreact', 'javascriptreact', 'javascript' },
-	}
 end
 
 

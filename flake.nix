@@ -269,13 +269,13 @@
                 vim-fugitive
                 vim-rhubarb
                 nvim-surround
+                nvim-ts-context-commentstring
               ];
               extra = with pkgs.vimPlugins; [
                 fidget-nvim
                 # lualine-lsp-progress
                 which-key-nvim
                 comment-nvim
-                nvim-ts-context-commentstring
                 undotree
                 indent-blankline-nvim
                 vim-startuptime

@@ -142,6 +142,19 @@ require('lze').load {
 		end,
 	},
 	{
+		"nvim-ts-context-commentstring",
+		for_cat = 'general.extra',
+		event = "DeferredUIEnter",
+		after = function(plugin)
+			local null_ls = require("null-ls")
+			null_ls.setup({
+				sources = {
+					null_ls.builtins.formatting.prettier,
+				},
+			})
+		end,
+	},
+	{
 		"indent-blankline.nvim",
 		for_cat = 'general.extra',
 		event = "DeferredUIEnter",
