@@ -74,11 +74,14 @@ if nixCats('markdown') then
 	vim.opt.conceallevel = 2
 end
 
+if nixCats('java') then
+	servers.jdtls = {}
+end
+
 if nixCats('react') then
 	servers.ts_ls = {}
 	servers.cssls = {}
 	servers.html = {}
-	servers.jdtls = {}
 
 	servers.eslint = {
 		settings = {
@@ -97,7 +100,7 @@ if nixCats('react') then
 		},
 		-- on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
 		-- capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities("null_ls"),
-		filetypes = { 'typescriptreact', 'javascriptreact', 'javascript' },
+		-- filetypes = { 'typescriptreact', 'javascriptreact', 'javascript' },
 	}
 end
 
