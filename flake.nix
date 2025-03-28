@@ -271,7 +271,7 @@
                 nvim-surround
               ];
               extra = with pkgs.vimPlugins; [
-                nvim-ts-context-commentstring
+                # nvim-ts-context-commentstring
                 fidget-nvim
                 # lualine-lsp-progress
                 which-key-nvim

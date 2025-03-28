@@ -121,24 +121,24 @@ require('lze').load {
 			vim.g.undotree_SplitWidth = 40
 		end,
 	},
-	{
-		"nvim-ts-context-commentstring",
-		for_cat = 'general.extra',
-		event = "DeferredUIEnter",
-		after = function(plugin)
-			require('ts_context_commentstring').setup({
-				enable_autocmd = false,
-			})
-		end,
-	},
+	-- {
+	-- 	"nvim-ts-context-commentstring",
+	-- 	for_cat = 'general.extra',
+	-- 	event = "DeferredUIEnter",
+	-- 	after = function(plugin)
+	-- 		require('ts_context_commentstring').setup({
+	-- 			enable_autocmd = false,
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"comment.nvim",
 		for_cat = 'general.extra',
 		event = "DeferredUIEnter",
 		after = function(plugin)
-			require('Comment').setup({
-				pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-			})
+			-- require('Comment').setup({
+			-- 	pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+			-- })
 		end,
 	},
 	{
