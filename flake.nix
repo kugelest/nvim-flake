@@ -150,6 +150,9 @@
               jdt-language-server
 			  # eslint
             ];
+			csharp = with pkgs; [
+				csharp-ls
+			];
 			markdown = with pkgs; [
 				marksman
 			];
@@ -402,6 +405,7 @@
             # enable the categories you want from categoryDefinitions
             categories = {
               markdown = true;
+              csharp = true;
               general = true;
               lint = true;
               format = true;

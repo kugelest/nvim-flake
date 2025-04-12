@@ -78,6 +78,10 @@ if nixCats('java') then
 	servers.jdtls = {}
 end
 
+if nixCats('csharp') then
+	servers.csharp_ls = {}
+end
+
 if nixCats('react') then
 	servers.ts_ls = {}
 	servers.cssls = {}
