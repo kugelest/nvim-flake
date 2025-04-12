@@ -151,7 +151,7 @@
 			  # eslint
             ];
 			csharp = with pkgs; [
-				# csharp-ls
+				csharp-ls
 				dotnet-sdk
 			];
 			markdown = with pkgs; [
