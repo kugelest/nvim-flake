@@ -132,6 +132,13 @@ require('lze').load {
 	-- 	end,
 	-- },
 	{
+		"roslyn.nvim",
+		for_cat = 'general.extra',
+		after = function(plugin)
+			require('Roslyn').setup()
+		end,
+	},
+	{
 		"comment.nvim",
 		for_cat = 'general.extra',
 		event = "DeferredUIEnter",

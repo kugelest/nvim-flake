@@ -153,8 +153,9 @@
 			csharp = with pkgs; [
 				# csharp-ls
 				# dotnet-sdk
-				mono
-				omnisharp-roslyn
+				# mono
+				# omnisharp-roslyn
+				roslyn-ls
 			];
 			markdown = with pkgs; [
 				marksman
