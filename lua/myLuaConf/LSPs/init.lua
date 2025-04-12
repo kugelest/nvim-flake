@@ -79,7 +79,8 @@ if nixCats('java') then
 end
 
 if nixCats('csharp') then
-	servers.csharp_ls = {}
+	servers.omnisharp = {}
+	-- servers.csharp_ls = {}
 end
 
 if nixCats('react') then
