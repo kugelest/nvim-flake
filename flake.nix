@@ -151,8 +151,10 @@
 			  # eslint
             ];
 			csharp = with pkgs; [
-				csharp-ls
-				dotnet-sdk
+				# csharp-ls
+				# dotnet-sdk
+				mono
+				omnisharp-roslyn
 			];
 			markdown = with pkgs; [
 				marksman
