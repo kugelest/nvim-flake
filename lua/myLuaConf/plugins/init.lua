@@ -135,7 +135,7 @@ require('lze').load {
 		"roslyn.nvim",
 		for_cat = 'general.extra',
 		after = function(plugin)
-			require('Roslyn').setup()
+			require('roslyn').setup()
 		end,
 	},
 	{
