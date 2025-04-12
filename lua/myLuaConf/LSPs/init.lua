@@ -79,7 +79,23 @@ if nixCats('java') then
 end
 
 if nixCats('csharp') then
-	servers.omnisharp = {}
+	local handle = io.popen("which OmniSharp")
+    local omnisharp_path = handle:read("*a"):gsub("\n", "")
+    handle:close()
+    
+    -- Der Pfad von 'which OmniSharp' führt zum Skript; für die DLL müssen wir den Pfad anpassen
+    local omnisharp_dll = omnisharp_path:gsub("/bin/OmniSharp$", "/lib/omnisharp-roslyn/OmniSharp.dll")
+    
+    servers.omnisharp = {
+        cmd = { "dotnet", omnisharp_dll },
+    }
+
+
+
+	
+	-- servers.omnisharp = {
+	-- 	cmd = { "dotnet", "/path/to/omnisharp/OmniSharp.dll" },
+	-- }
 	-- servers.csharp_ls = {}
 end
 
